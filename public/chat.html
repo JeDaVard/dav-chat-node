@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat app</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div id="sidebar" class="sidebar">
+</div>
+<div class="chatapp">
+    <h1 class="appname">Chat App</h1>
+
+    <div class="messages" id="messagesParent">
+        <div id="messages"></div>
+    </div>
+    <button id="send-location" class="send-location"><div class="send-loc"></div></button>
+    <form id="message-form" class="message-form">
+        <label><input name="message" placeholder="Message" autocomplete="off"></label>
+        <button><img src="/img/send.png" alt="Send" width="100%" style="margin: -2px 0 0 2px; transform: rotate(-45deg)"></button>
+    </form>
+
+</div>
+
+<script id="sidebar-template" type="text/html">
+    <h2>Room: {{room}}</h2>
+    <h3>Users</h3>
+    <ul>
+        {{#users}}
+             <li>{{username}}</li>
+        {{/users}}
+    </ul>
+</script>
+<script id="message-template" type="text/html">
+    <div class="message">
+        <p class="senderName"><b>{{username}}</b></p>
+        <p><span>{{createdAt}}</span> {{text}}</p>
+    </div>
+</script>
+<script id="locMes-template" type="text/html">
+    <div class="message">
+        <p class="senderName"><b>{{username}}</b></p>
+        <p><span>{{createdAt}}</span> <a href="{{url}}" target="_blank">Shared the location</a></p>
+    </div>
+</script>
+<script id="anonymous-message-template" type="text/html">
+    <div class="message">
+        <p><span>{{createdAt}}</span> {{text}}</p>
+    </div>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/clientside.js"></script>
+</body>
+</html>
