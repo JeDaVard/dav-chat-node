@@ -39,7 +39,7 @@ const fixScroll = () => {
     // }
 };
 
-//Server messages from server
+//Server messages from weather-app
 socket.on('anoMessage', ({ text, createdAt }) => {
     const html = Mustache.render(anoMessageTemplate, {
         createdAt: moment(createdAt).format('HH:mm:ss'),
@@ -48,7 +48,7 @@ socket.on('anoMessage', ({ text, createdAt }) => {
     $messages.insertAdjacentHTML('beforeend', html);
     fixScroll()
 });
-//User Messages from server
+//User Messages from weather-app
 socket.on('message', ({ text, createdAt, username, }) => {
     const html = Mustache.render(messageTemplate, {
         username,
@@ -79,7 +79,7 @@ $messageForm.addEventListener('submit', (e) => {
     })
 });
 
-//Location message from server
+//Location message from weather-app
 socket.on('locationMessage', ({ url, createdAt, username }) => {
     const html = Mustache.render(locMesTemplate, {
         username,
